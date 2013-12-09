@@ -1,4 +1,6 @@
 language: python
+python:
+  - "2.7"
 install:
-  - sudo pip install peewee jinja2 bottle
+  - pip install peewee jinja2 bottle
 script: python test.py
