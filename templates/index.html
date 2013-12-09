@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+ "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <title>ゲストブック</title>
+    <link rel="stylesheet" href="/static/main.css" type="text/css" />
+  </head>
+  <body>
+    <div id="main">
+      <h1>ゲストブック</h1>
+      <div id="form-area">
+        <p>書き込みをどうぞ。</p>
+        <form action="/post" method="post">
+          <table>
+            <tr>
+              <th>名前</th>
+              <td>
+                <input type="text" size="20" name="name" />
+              </td>
+            </tr>
+            <tr>
+              <th>コメント</th>
+              <td>
+                <textarea rows="5" cols="40" name="comment"></textarea>
+              </td>
+            </tr>
+          </table>
+          <p><button type="submit">送信</button></p>
+        </form>
+      </div>
+      <div id="entries-area">
+        <h2>これまでの書き込み</h2>
+        {% for greeting in greeting_list %}
+        <div class="entry">
+          <h3>{{ greeting.name }} さんの書き込み({{ greeting.create_at|datetime_fmt }}):</h3>
+          <p>{{ greeting.comment|nl2br }}</p>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </body>
+</html>
